@@ -8,7 +8,7 @@ import {
   FolderIcon, 
   FileIcon, 
   MoreHorizontalIcon,
-  DownloadIcon,
+  Download,
   ShareIcon,
   TrashIcon,
   EditIcon,
@@ -399,7 +399,7 @@ export default function FileGrid({
                         onClick={(e) => handleDownload(item, e)}
                         title="Download"
                       >
-                        <DownloadIcon className="h-3 w-3" />
+                        <Download className="h-3 w-3" />
                       </Button>
                     </div>
                   )}

@@ -7,7 +7,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { 
   SearchIcon, 
   ShareIcon, 
-  DownloadIcon, 
+  ArrowDownTrayIcon, 
   EyeIcon, 
   FolderIcon, 
   FileIcon,
@@ -258,7 +258,7 @@ export default function SharedPage() {
                         onClick={() => handleDownload(item)}
                         title="Download"
                       >
-                        <DownloadIcon className="h-4 w-4" />
+                        <ArrowDownTrayIcon className="h-4 w-4" />
                       </Button>
                     </>
                   )}

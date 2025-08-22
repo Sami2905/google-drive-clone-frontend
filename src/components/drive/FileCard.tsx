@@ -14,7 +14,7 @@ import {
   ArchiveBoxIcon,
   CodeBracketIcon,
   EyeIcon,
-  DownloadIcon,
+  ArrowDownTrayIcon,
   TrashIcon
 } from '@heroicons/react/24/outline';
 
@@ -95,7 +95,7 @@ function FileCardImpl({
             }}
             title="Download"
           >
-            <DownloadIcon className="h-4 w-4" />
+            <ArrowDownTrayIcon className="h-4 w-4" />
           </Button>
         )}
         

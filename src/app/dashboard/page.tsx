@@ -21,7 +21,7 @@ import {
   FilterIcon,
   MoreHorizontalIcon,
   TrashIcon,
-  DownloadIcon,
+  Download,
   EyeIcon,
   ShareIcon,
   LogOutIcon,
@@ -768,7 +768,7 @@ export default function DashboardPage() {
                     onClick={() => handleBulkDownload()}
                     disabled={selectedItems.size === 0}
                   >
-                    <DownloadIcon className="w-4 h-4 mr-2" />
+                    <Download className="w-4 h-4 mr-2" />
                     Download
                   </Button>
                   
