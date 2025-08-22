@@ -132,6 +132,10 @@ const nextConfig = {
 
   // Output configuration - use standalone for production with API functionality
   output: 'standalone',
+  
+  // Disable static generation completely to prevent Html import errors
+  trailingSlash: false,
+  generateStaticParams: false,
 
   // TypeScript configuration
   typescript: {
