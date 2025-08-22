@@ -85,6 +85,7 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
     scrollRestoration: true,
+    staticGenerationAsyncStorage: false,
   },
 
   // Performance optimizations
@@ -132,6 +133,13 @@ const nextConfig = {
 
   // Output configuration
   output: 'standalone',
+  
+  // Disable static generation to prevent Html import errors
+  experimental: {
+    optimizeCss: true,
+    scrollRestoration: true,
+    staticGenerationAsyncStorage: false,
+  },
 
   // TypeScript configuration
   typescript: {
