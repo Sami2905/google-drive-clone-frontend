@@ -135,7 +135,6 @@ const nextConfig = {
   
   // Disable static generation completely to prevent Html import errors
   trailingSlash: false,
-  generateStaticParams: false,
 
   // TypeScript configuration
   typescript: {
