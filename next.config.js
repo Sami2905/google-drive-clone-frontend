@@ -130,18 +130,8 @@ const nextConfig = {
   // Trailing slash configuration
   trailingSlash: false,
 
-  // Output configuration
-  output: 'standalone',
-  
-  // Disable static generation to prevent Html import errors
-  generateStaticParams: false,
-  
-  // Disable static generation completely
-  trailingSlash: false,
-  output: 'standalone',
-  
-  // Force dynamic rendering
-  dynamicParams: true,
+  // Output configuration - use export to prevent static generation issues
+  output: 'export',
 
   // TypeScript configuration
   typescript: {
