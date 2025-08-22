@@ -130,8 +130,8 @@ const nextConfig = {
   // Trailing slash configuration
   trailingSlash: false,
 
-  // Output configuration - use export to prevent static generation issues
-  output: 'export',
+  // Output configuration - use standalone for production with API functionality
+  output: 'standalone',
 
   // TypeScript configuration
   typescript: {
