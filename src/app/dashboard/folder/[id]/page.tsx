@@ -9,6 +9,8 @@ import BreadcrumbsOverflow, { Crumb } from '@/components/drive/BreadcrumbsOverfl
 import FileUploader from '@/components/drive/FileUploader';
 import { ViewMode } from '@/types/drive';
 
+
+
 export default function FolderPage() {
   const params = useParams<{ id: string }>();
   const id = params?.id;
