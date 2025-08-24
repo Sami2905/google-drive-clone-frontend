@@ -140,7 +140,7 @@ export default function FileGrid({
           item: {
             ...item,
             preview_url: previewResponse.data.preview_url
-          } as any // Type assertion to avoid TypeScript error
+          } as FileGridItem & { preview_url: string }
         });
       } else {
         // If preview is not available, fall back to download

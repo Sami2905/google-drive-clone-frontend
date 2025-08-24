@@ -285,16 +285,16 @@ export default function EnhancedPdfViewer({ fileId, fileName }: EnhancedPdfViewe
             className="w-full h-full min-h-[600px]"
             style={{ border: '1px solid #e5e7eb' }}
           >
-            <p className="text-center p-8 text-gray-600">
-              Your browser doesn't support PDF viewing. 
-              <a 
-                href={url} 
-                download 
-                className="text-blue-600 hover:underline ml-2"
-              >
-                Click here to download the PDF
-              </a>
-            </p>
+                          <p className="text-center p-8 text-gray-600">
+                Your browser doesn&apos;t support PDF viewing. 
+                <a 
+                  href={url} 
+                  download 
+                  className="text-blue-600 hover:underline ml-2"
+                >
+                  Click here to download the PDF
+                </a>
+              </p>
           </object>
         ) : fileType === 'image' ? (
           <img 

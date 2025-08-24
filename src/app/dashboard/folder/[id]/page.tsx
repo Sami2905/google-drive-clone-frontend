@@ -10,7 +10,9 @@ import FileUploader from '@/components/drive/FileUploader';
 import { ViewMode } from '@/types/drive';
 
 export default function FolderPage() {
-  const { id } = useParams<{ id: string }>();
+  const params = useParams<{ id: string }>();
+  const id = params?.id;
+  
   type FolderItem = { id: string; name: string };
   type FileItem = { id: string; name: string; size: number; mime_type: string };
   const [folders, setFolders] = useState<FolderItem[]>([]);
@@ -40,10 +42,26 @@ export default function FolderPage() {
   }, [id]);
 
   useEffect(() => {
-    fetchContents();
-  }, [fetchContents]);
+    if (id) {
+      fetchContents();
+    }
+  }, [fetchContents, id]);
 
-
+  if (!id) {
+    return (
+      <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+        <AppHeader />
+        <div className="grid grid-cols-1 md:grid-cols-[16rem_minmax(0,1fr)]">
+          <Sidebar variant="desktop" />
+          <main className="min-h-[calc(100vh-4rem)] overflow-y-auto">
+            <div className="mx-auto w-full max-w-6xl p-4">
+              <div className="text-center text-gray-500">Invalid folder ID</div>
+            </div>
+          </main>
+        </div>
+      </div>
+    );
+  }
 
   const goCrumb = (crumbId: string | null) => {
     if (crumbId === null) {

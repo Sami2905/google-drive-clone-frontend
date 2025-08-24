@@ -8,7 +8,7 @@ import {
   FolderIcon, 
   FileIcon, 
   MoreHorizontalIcon,
-  ArrowDownTrayIcon,
+  DownloadIcon,
   ShareIcon,
   TrashIcon,
   EditIcon

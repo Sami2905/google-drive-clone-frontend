@@ -10,6 +10,8 @@ function OAuthSuccessContent() {
   const setToken = useAuthStore((s) => s.setToken);
 
   useEffect(() => {
+    if (!params) return;
+    
     const token = params.get("token");
     if (token) {
       // Persist for api lib + reloads
@@ -21,7 +23,7 @@ function OAuthSuccessContent() {
       toast.error("Missing token in callback");
       router.replace("/auth/login");
     }
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [params, setToken, router]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="flex h-screen w-screen items-center justify-center text-slate-600 dark:text-slate-300">

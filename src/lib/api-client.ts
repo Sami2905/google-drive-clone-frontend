@@ -173,37 +173,37 @@ class ApiClient {
 
   // File Operations
   async deleteFile(fileId: string): Promise<ApiResponse<void>> {
-    return this.request<void>(`/files/${fileId}`, {
+    return this.request<ApiResponse<void>>(`/files/${fileId}`, {
       method: 'DELETE',
     });
   }
 
   async restoreFile(fileId: string): Promise<ApiResponse<void>> {
-    return this.request<void>(`/files/${fileId}/restore`, {
+    return this.request<ApiResponse<void>>(`/files/${fileId}/restore`, {
       method: 'POST',
     });
   }
 
   async permanentlyDeleteFile(fileId: string): Promise<ApiResponse<void>> {
-    return this.request<void>(`/files/${fileId}/permanent`, {
+    return this.request<ApiResponse<void>>(`/files/${fileId}/permanent`, {
       method: 'DELETE',
     });
   }
 
   async getFileMetadata(fileId: string): Promise<ApiResponse<File>> {
-    return this.request<File>(`/files/${fileId}/metadata`, {
+    return this.request<ApiResponse<File>>(`/files/${fileId}/metadata`, {
       method: 'GET',
     });
   }
 
   async getFilePreview(fileId: string): Promise<ApiResponse<{ preview_url: string }>> {
-    return this.request<{ preview_url: string }>(`/files/${fileId}/preview`, {
+    return this.request<ApiResponse<{ preview_url: string }>>(`/files/${fileId}/preview`, {
       method: 'GET',
     });
   }
 
   async getFileThumbnail(fileId: string): Promise<ApiResponse<{ thumbnail_url: string }>> {
-    return this.request<{ thumbnail_url: string }>(`/files/${fileId}/thumbnail`, {
+    return this.request<ApiResponse<{ thumbnail_url: string }>>(`/files/${fileId}/thumbnail`, {
       method: 'GET',
     });
   }
@@ -211,26 +211,26 @@ class ApiClient {
   // Folder Operations
   async deleteFolder(folderId: string, permanent: boolean = false): Promise<ApiResponse<void>> {
     const url = permanent ? `/folders/${folderId}/permanent` : `/folders/${folderId}`;
-    return this.request<void>(url, {
+    return this.request<ApiResponse<void>>(url, {
       method: 'DELETE',
     });
   }
 
   async restoreFolder(folderId: string): Promise<ApiResponse<void>> {
-    return this.request<void>(`/folders/${folderId}/restore`, {
+    return this.request<ApiResponse<void>>(`/folders/${folderId}/restore`, {
       method: 'POST',
     });
   }
 
   // Share Operations
   async getSharedItems(): Promise<ApiResponse<File[]>> {
-    return this.request<File[]>('/shares/shared-with-me', {
+    return this.request<ApiResponse<File[]>>('/shares/shared-with-me', {
       method: 'GET',
     });
   }
 
   async shareItem(itemId: string, itemType: 'file' | 'folder', permissions: string[], users: string[]): Promise<ApiResponse<Share>> {
-    return this.request<Share>('/shares', {
+    return this.request<ApiResponse<Share>>('/shares', {
       method: 'POST',
       body: JSON.stringify({
         item_id: itemId,
@@ -242,27 +242,17 @@ class ApiClient {
   }
 
   // Trash Operations
-  async getTrashItems(limit: number = 100, offset: number = 0): Promise<ApiResponse<{ files: File[], folders: any[] }>> {
+  async getTrashItems(limit: number = 100, offset: number = 0): Promise<ApiResponse<{ files: File[], folders: Folder[] }>> {
     const params = new URLSearchParams();
     if (limit) params.append('limit', limit.toString());
     if (offset) params.append('offset', offset.toString());
     
-    return this.request<{ files: File[], folders: any[] }>(`/trash?${params.toString()}`, {
+    return this.request<ApiResponse<{ files: File[], folders: Folder[] }>>(`/trash?${params.toString()}`, {
       method: 'GET',
     });
   }
 
-  async restoreFile(fileId: string): Promise<ApiResponse<{ message: string }>> {
-    return this.request<{ message: string }>(`/files/${fileId}/restore`, {
-      method: 'POST',
-    });
-  }
 
-  async permanentlyDeleteFile(fileId: string): Promise<ApiResponse<{ message: string }>> {
-    return this.request<{ message: string }>(`/files/${fileId}/permanent`, {
-      method: 'DELETE',
-    });
-  }
 
   // Share Operations
   async shareFile(fileId: string, expiresIn: number = 7): Promise<ApiResponse<{
@@ -277,7 +267,7 @@ class ApiClient {
       size: number;
     };
   }>> {
-    return this.request<{
+    return this.request<ApiResponse<{
       shareToken: string;
       shareUrl: string;
       signedUrl: string | null;
@@ -288,7 +278,7 @@ class ApiClient {
         mime_type: string;
         size: number;
       };
-    }>(`/files/${fileId}/share`, {
+    }>>(`/files/${fileId}/share`, {
       method: 'POST',
       body: JSON.stringify({ expiresIn }),
     });
@@ -299,7 +289,11 @@ class ApiClient {
     token: string;
     expiresAt: string;
   }>> {
-    return this.request(`/shared/${token}`, {
+    return this.request<ApiResponse<{
+      message: string;
+      token: string;
+      expiresAt: string;
+    }>>(`/shared/${token}`, {
       method: 'GET',
     });
   }

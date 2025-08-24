@@ -64,7 +64,7 @@ export default function TrashPage() {
             size: 0,
             created_at: folder.created_at,
             updated_at: folder.updated_at,
-            deleted_at: folder.deleted_at,
+            deleted_at: folder.updated_at, // Use updated_at as fallback since deleted_at doesn't exist
             is_shared: folder.is_shared
           })),
           ...files.map(file => ({

@@ -12,6 +12,8 @@ function GoogleCallbackContent() {
   const [isProcessing, setIsProcessing] = useState(true);
 
   useEffect(() => {
+    if (!searchParams) return;
+    
     const processCallback = async () => {
       try {
         const token = searchParams.get('token');

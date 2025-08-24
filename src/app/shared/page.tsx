@@ -86,7 +86,7 @@ export default function SharedPage() {
         toast.error('Failed to download file');
       }
     } else {
-      toast.info('Folders cannot be downloaded directly');
+      toast('Folders cannot be downloaded directly');
     }
   };
 
@@ -100,7 +100,7 @@ export default function SharedPage() {
         toast.error('Failed to open preview');
       }
     } else {
-      toast.info('Folders cannot be previewed');
+      toast('Folders cannot be previewed');
     }
   };
 
