@@ -3,7 +3,7 @@ import { useAuthStore } from "@/store/authStore";
 import toast from "react-hot-toast";
 
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api",
+  baseURL: "/api", // Use local proxy to avoid CORS issues
 });
 
 api.interceptors.request.use((config) => {

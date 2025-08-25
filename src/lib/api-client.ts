@@ -16,7 +16,7 @@ import {
   ApiResponse
 } from '../types';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+const API_BASE_URL = '/api'; // Use local proxy to avoid CORS issues
 
 class ApiClient {
   private baseUrl: string;
@@ -49,7 +49,7 @@ class ApiClient {
     options: RequestInit = {}
   ): Promise<T> {
     const token = this.getAuthToken();
-    const url = endpoint.startsWith('http') ? endpoint : `${this.baseUrl}/api${endpoint}`;
+    const url = endpoint.startsWith('http') ? endpoint : `${this.baseUrl}${endpoint}`;
     
     const headers: Record<string, string> = {
       'Content-Type': 'application/json',
