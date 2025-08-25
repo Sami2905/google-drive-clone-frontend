@@ -5,7 +5,8 @@
 [build.environment]
   NEXT_PUBLIC_API_URL = "https://google-drive-clone-backend-gpqh.onrender.com/api"
   NEXT_PUBLIC_APP_NAME = "Google Drive Clone"
-  NODE_VERSION = "20.17.0"
+  NPM_CONFIG_PRODUCTION = "false"
+  NODE_VERSION = "22.12.0"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
