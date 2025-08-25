@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "prebuild": "node scripts/check-next-document.mjs",
+    "prebuild": "node scripts/check-next-document.mjs && node scripts/check-secrets.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -57,6 +57,7 @@
     "react-syntax-highlighter": "^15.6.1",
     "react-toastify": "^11.0.5",
     "react-virtuoso": "^4.13.0",
+    "server-only": "^0.0.1",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.3.1",
     "tailwindcss-animate": "^1.0.7",
